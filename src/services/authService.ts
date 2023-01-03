@@ -63,38 +63,4 @@ const loginService = async (
     return token;
 };
 
-const userService = async (id: number): Promise<User | null> => {
-    const { password, ...user } = req['user'];
-
-    return user
-};
-
-const logoutService = async (
-    id: number,
-    user: Omit<User, "id">
-
-): Promise<Omit<User, "password">> => {
-    const { name, email } = user;
-    return db.user.update({
-        where: {
-            id,
-        },
-        data: {
-            name,
-            email,
-        },
-        select: {
-            id: true,
-            name: true,
-            email: true,
-        },
-    });
-};
-
-// const generateToken = (id: number) => {
-//     return jwt.sign({ id }, "process.env.JWT_SECRET", {
-//         expiresIn: '30d',
-//     })
-// }
-
-export { registerService, loginService, userService, logoutService };
+export { registerService, loginService };

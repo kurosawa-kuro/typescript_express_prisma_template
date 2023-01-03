@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { User, registerService, loginService, userService, logoutService } from "../services/authService";
+import { User, registerService, loginService } from "../services/authService";
 import asyncHandler from '../utils/asyncHandler';
 
 // @desc    Create user

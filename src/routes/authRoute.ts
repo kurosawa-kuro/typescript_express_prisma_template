@@ -14,10 +14,8 @@ router.route('/login')
 router.route('/user')
     .get(AuthMiddleware, userAction);
 
-
-
 router.route('/logout')
-    .post(logoutAction);
+    .post(AuthMiddleware, logoutAction);
 
 // // GET POST
 // router.route('/')
