@@ -17,15 +17,4 @@ router.route('/user')
 router.route('/logout')
     .post(AuthMiddleware, logoutAction);
 
-// // GET POST
-// router.route('/')
-//     .get(readUsersAction)
-//     .post(protect, createUserAction);
-
-// // GET PUT DELETE     
-// router.route('/:id')
-//     .get(readUserAction)
-//     .put(protect, updateUserAction)
-//     .delete(protect, deleteUserAction);
-
 export default router;
