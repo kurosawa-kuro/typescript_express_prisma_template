@@ -1,18 +1,22 @@
 import express from 'express';
 
 const router = express.Router();
-import { createUserAction, readUsersAction, readUserAction, updateUserAction, deleteUserAction } from '../controllers/userController';
+import { registerAction, loginAction, userAction, logoutAction } from '../controllers/authController';
 
 // GET POST
-router.route('/')
-    .get(readUsersAction)
-    .post(createUserAction);
+router.route('/register')
+    .post(registerAction);
 
-// GET PUT DELETE     
-router.route('/:id')
-    .get(readUserAction)
-    .put(updateUserAction)
-    .delete(deleteUserAction);
+router.route('/login')
+    .post(loginAction);
+
+router.route('/user')
+    .get(userAction);
+
+
+
+router.route('/logout')
+    .post(logoutAction);
 
 // // GET POST
 // router.route('/')
