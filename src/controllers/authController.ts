@@ -36,7 +36,6 @@ const loginAction = asyncHandler(async (req: Request, res: Response) => {
 // @route   GET /users
 // @access  Public
 const userAction = asyncHandler(async (req: Request, res: Response) => {
-    // console.log("req.user after protect", req.user)
     const { password, ...user } = req['user'];
 
     res.send(user);
