@@ -46,11 +46,11 @@ const userAction = asyncHandler(async (req: Request, res: Response) => {
 // // @route   PUT /user/:id
 // // @access  Public
 const logoutAction = asyncHandler(async (req: Request, res: Response) => {
-    const id: number = parseInt(req.params?.id, 10);
-    const body: User = req.body;
-    const user = await logoutService(id, body);
+    res.cookie('jwt', '', { maxAge: 0 });
 
-    return res.status(201).json({ user });
+    res.send({
+        message: 'success'
+    })
 });
 
 export { registerAction, userAction, loginAction, logoutAction };
