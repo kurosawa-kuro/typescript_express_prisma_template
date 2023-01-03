@@ -37,9 +37,9 @@ const loginAction = asyncHandler(async (req: Request, res: Response) => {
 // @access  Public
 const userAction = asyncHandler(async (req: Request, res: Response) => {
     // console.log("req.user after protect", req.user)
-    const users = await userService();
+    const { password, ...user } = req['user'];
 
-    return res.status(200).json({ users });
+    res.send(user);
 });
 
 // // @desc    Update user

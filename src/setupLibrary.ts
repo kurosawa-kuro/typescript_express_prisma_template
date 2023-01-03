@@ -1,5 +1,6 @@
 import express from 'express';
 import logger from "morgan";
+import cookieParser from "cookie-parser";
 import cors from 'cors';
 import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
@@ -9,6 +10,8 @@ function setupLibrary(app: express.Express) {
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+
+    app.use(cookieParser());
 
     app.use(cors({
         credentials: true,

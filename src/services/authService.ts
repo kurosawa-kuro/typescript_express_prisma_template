@@ -64,11 +64,9 @@ const loginService = async (
 };
 
 const userService = async (id: number): Promise<User | null> => {
-    return db.user.findUnique({
-        where: {
-            id,
-        },
-    });
+    const { password, ...user } = req['user'];
+
+    return user
 };
 
 const logoutService = async (
