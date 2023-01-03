@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test-single": "jest ../__tests__/routes/index.routes.test.ts --coverage",
+    "test-single-case": "jest -t 'User route readUsersAction' --coverage"
   },
   "repository": {
     "type": "git",

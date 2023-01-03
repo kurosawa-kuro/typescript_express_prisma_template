@@ -10,7 +10,7 @@ const app: express.Express = express();
 setupLibrary(app);
 
 app.use('/', topRoute);
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -7,6 +7,9 @@ import swaggerJSDoc from "swagger-jsdoc";
 function setupLibrary(app: express.Express) {
     app.use(logger("dev"));
 
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+
     app.use(cors({
         credentials: true,
         origin: ["http://localhost:3000"]
