@@ -1,9 +1,9 @@
 import { PrismaClient } from '@prisma/client'
-import bcrypt from 'bcrypt';
+// import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient()
 
-import { User as userInterface } from '../../app/interfaces/user';
+// import { User as userInterface } from '../../app/interfaces/user';
 
 import { Users as usersData } from './data/users';
 import { Posts as postsData } from './data/posts';
@@ -18,7 +18,7 @@ async function runSeeders() {
 async function seed_users() {
     // console.log(await bcrypt.hash('password', 10))
     await Promise.all(
-        usersData.map(async (user: userInterface) =>
+        usersData.map(async (user: any) =>
             await prisma.user.create({
                 data: {
                     id: user.id,
