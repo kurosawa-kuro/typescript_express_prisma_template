@@ -8,12 +8,27 @@ import asyncHandler from '../utils/asyncHandler';
 // @desc    Create user
 // @route   POST /users
 // @access  Public
-const createUserAction = asyncHandler(async (req: Request, res: Response) => {
-    const body: User = req.body;
-    const user = await createUserService(body);
+export const Upload = asyncHandler(async (req: Request, res: Response) => {
+    const storage = multer.diskStorage({
+        destination: './uploads',
+        filename(_, file, callback) {
+            const randomName = Math.random().toString(20).substr(2, 12);
+            return callback(null, `${randomName}${extname(file.originalname)}`)
+        }
+    });
 
-    return res.status(201).json({ user });
-});
+    const upload = multer({ storage }).single('image');
+
+    upload(req, res, (err) => {
+        if (err) {
+            return res.send(400).send(err);
+        }
+
+        res.send({
+            url: `http://localhost:8000/api/uploads/${req.file.filename}`
+        })
+    });
+})
 
 // @desc    Read users
 // @route   GET /users
@@ -57,30 +72,4 @@ const deleteUserAction = asyncHandler(async (req: Request, res: Response) => {
     return res.status(204).json("User has been successfully deleted");
 });
 
-const uploadUserAction = asyncHandler(async (req: Request, res: Response) => {
-    console.log('uploadUserAction')
-    console.log("req", req)
-    console.log("req.body", req.body)
-    console.log("req.file", req.file)
-    const storage = multer.diskStorage({
-        destination: './uploads',
-        filename(_, file, callback) {
-            const randomName = Math.random().toString(20).substr(2, 12);
-            return callback(null, `${randomName}${extname(file.originalname)}`)
-        }
-    });
-
-    const upload = multer({ storage }).single('image');
-
-    upload(req, res, (err) => {
-        if (err) {
-            return res.send(400).send(err);
-        }
-
-        res.send({
-            url: `http://localhost:8000/api/uploads/${req.file.filename}`
-        })
-    });
-});
-
-export { createUserAction, readUsersAction, readUserAction, updateUserAction, deleteUserAction, uploadUserAction };
+export { createUserAction, readUsersAction, readUserAction, updateUserAction, deleteUserAction };

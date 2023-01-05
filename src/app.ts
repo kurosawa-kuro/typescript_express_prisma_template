@@ -11,6 +11,7 @@ const app: express.Express = express();
 setupLibrary(app);
 
 app.use('/api/', topRoute);
+app.use('/api/uploads', express.static('./uploads'));
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 

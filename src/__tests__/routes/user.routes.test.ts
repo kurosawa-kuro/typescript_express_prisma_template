@@ -1,6 +1,7 @@
 import request from "supertest";
 import { faker } from '@faker-js/faker';
 
+
 import app from "../../app";
 
 describe("User route", () => {
@@ -36,8 +37,8 @@ describe("User route", () => {
         }
         const res = await request(app).post("/api/users").send(data);
         console.log('res', {
-            'error': res.error,
             'statusCode': res.statusCode,
+            'error': res.error,
             'text': res.text,
             "body": res.body
         })
