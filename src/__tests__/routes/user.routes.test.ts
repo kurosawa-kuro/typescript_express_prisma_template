@@ -1,9 +1,11 @@
 import request from "supertest";
+import { faker } from '@faker-js/faker';
 
 import app from "../../app";
 
 describe("User route", () => {
     test("User route readUsersAction", async () => {
+
         const res = await request(app).get("/api/users");
         // console.log('res', res)
         // console.log('res', res)
@@ -29,7 +31,7 @@ describe("User route", () => {
     test("User route createUsersAction", async () => {
         const data = {
             name: "test",
-            email: "testtttddddtddddsdtdttt@mail.com",
+            email: faker.internet.email(),
             password: "password",
         }
         const res = await request(app).post("/api/users").send(data);
@@ -41,14 +43,6 @@ describe("User route", () => {
         console.log('res.body', res.body)
         console.log('typeof res.body.user', res.body.user)
         expect(res.statusCode).toEqual(201);
-        // expect(res.body).toEqual({
-        //     users: [
-        //         { id: 1, name: 'test admin', email: 'admin@admin.com' },
-        //         { id: 2, name: 'test user', email: 'user@user.com' },
-        //         { id: 3, name: 'test user', email: 'user2@user.com' },
-        //         { id: 4, name: 'test user', email: 'user3@user.com' }
-        //     ]
-        // });
         expect(res.body.user).toHaveProperty('name');
         expect(res.body.user).toHaveProperty('email');
     });

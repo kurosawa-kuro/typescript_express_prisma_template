@@ -1,6 +1,8 @@
 # typescript_express_prisma_template
 
 ```
+sudo /opt/lampp/lampp start
+
 npm install
 cd prisma
 npx prisma generate
