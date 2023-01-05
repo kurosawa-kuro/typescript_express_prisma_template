@@ -80,16 +80,6 @@ describe("User route", () => {
 
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveProperty('url');
-
-        // const sleep = (second: number) => new Promise(resolve => setTimeout(resolve, second * 1000))
-        // await sleep(4)
-        // expect(fs.existsSync('src/uploads/8ea4i72f5c1j.png')).toBeTruthy();
-        // expect(fs.existsSync(`src/uploads/${filename}`)).toBeTruthy();
-        // console.log(`${__rootDir}`)
-        // console.log(fs.existsSync(`src/uploads/3f3cj09e6af4.png`))
-        console.log(fs.existsSync(`uploads/${filename}`))
         expect(fs.existsSync(`uploads/${filename}`)).toBeTruthy();
-        // console.log(fs.existsSync(`../../../../src/uploads/file.png`))
-        // expect(fs.readFileSync(`${__dirname}/file.png`)).toBe(true);
     });
 });
