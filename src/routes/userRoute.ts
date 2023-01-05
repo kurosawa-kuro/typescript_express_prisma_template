@@ -1,12 +1,19 @@
 import express from 'express';
 
 const router = express.Router();
-import { createUserAction, readUsersAction, readUserAction, updateUserAction, deleteUserAction } from '../controllers/userController';
+import { createUserAction, readUsersAction, readUserAction, updateUserAction, deleteUserAction, uploadUserAction } from '../controllers/userController';
 
 // GET POST
 router.route('/')
     .get(readUsersAction)
     .post(createUserAction);
+
+// GET POST
+router.route('/upload')
+    .post(uploadUserAction);
+
+
+
 
 // GET PUT DELETE     
 router.route('/:id')
