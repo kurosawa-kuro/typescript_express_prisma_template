@@ -1,12 +1,12 @@
 import request from "supertest";
 
-import app from "../../src/app";
+import app from "../../app";
 
 describe("Top route", () => {
     test("Top route index action", async () => {
-        const res = await request(app).get("/");
+        const res = await request(app).get("/api/");
         // console.log('res', res)
-        console.log('res', res)
+        // console.log('res', res)
         console.log('res.error', res.error)
         console.log('res.text', res.text)
         // console.log('res.statusCode', res.statusCode)
