@@ -1,3 +1,4 @@
+import express from 'express';
 import request from "supertest";
 import { faker } from '@faker-js/faker';
 
@@ -5,6 +6,7 @@ import fs from 'fs';
 import app from "../../app";
 
 describe("User route", () => {
+
     // test("User route readUsersAction", async () => {
 
     //     const res = await request(app).get("/api/users");
@@ -64,6 +66,7 @@ describe("User route", () => {
             .field('email', 'myemail@gmail.com')
             .attach('image', fs.readFileSync(`${__dirname}/file.png`), 'file.png')
 
+        console.log("path", express.static('./uploads'))
         console.log('res', {
             'statusCode': res.statusCode,
             'error': res.error,
@@ -71,11 +74,22 @@ describe("User route", () => {
             "body": res.body
         })
 
+        console.log("res.body.url", res.body.url.replace('http://localhost:8000/api/uploads/', ''))
+
+        const filename = res.body.url.replace('http://localhost:8000/api/uploads/', '')
+
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveProperty('url');
+
+        // const sleep = (second: number) => new Promise(resolve => setTimeout(resolve, second * 1000))
+        // await sleep(4)
+        // expect(fs.existsSync('src/uploads/8ea4i72f5c1j.png')).toBeTruthy();
+        // expect(fs.existsSync(`src/uploads/${filename}`)).toBeTruthy();
+        // console.log(`${__rootDir}`)
+        // console.log(fs.existsSync(`src/uploads/3f3cj09e6af4.png`))
+        console.log(fs.existsSync(`uploads/${filename}`))
+        expect(fs.existsSync(`uploads/${filename}`)).toBeTruthy();
+        // console.log(fs.existsSync(`../../../../src/uploads/file.png`))
+        // expect(fs.readFileSync(`${__dirname}/file.png`)).toBe(true);
     });
 });
-
-function attach(arg0: string, arg1: any, arg2: string) {
-    throw new Error("Function not implemented.");
-}
