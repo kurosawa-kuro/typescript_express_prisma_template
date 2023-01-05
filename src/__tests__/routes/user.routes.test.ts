@@ -62,7 +62,7 @@ describe("User route", () => {
             .post("/api/users/upload")
             .set('content-type', 'multipart/form-data')
             .field('email', 'myemail@gmail.com')
-            .attach('image', fs.readFileSync(`${__dirname}/file.png`), 'tests/file.png')
+            .attach('image', fs.readFileSync(`${__dirname}/file.png`), 'file.png')
 
         console.log('res', {
             'statusCode': res.statusCode,
