@@ -35,14 +35,15 @@ describe("User route", () => {
             password: "password",
         }
         const res = await request(app).post("/api/users").send(data);
-        // console.log('res', res)
-        // console.log('res', res)
-        console.log('res.error', res.error)
-        console.log('res.text', res.text)
-        // console.log('res.statusCode', res.statusCode)
-        console.log('res.body', res.body)
-        console.log('typeof res.body.user', res.body.user)
+        console.log('res', {
+            'error': res.error,
+            'statusCode': res.statusCode,
+            'text': res.text,
+            "body": res.body
+        })
+
         expect(res.statusCode).toEqual(201);
+        expect(res.body.user).toHaveProperty('id');
         expect(res.body.user).toHaveProperty('name');
         expect(res.body.user).toHaveProperty('email');
     });
