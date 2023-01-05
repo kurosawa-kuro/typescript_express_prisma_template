@@ -59,9 +59,9 @@ const deleteUserAction = asyncHandler(async (req: Request, res: Response) => {
 
 const uploadUserAction = asyncHandler(async (req: Request, res: Response) => {
     console.log('uploadUserAction')
-    console.log("req", req)
-    console.log("req.body", req.body)
-    console.log("req.file", req.file)
+    // console.log("req", req)
+    // console.log("req.body", req.body)
+
     const storage = multer.diskStorage({
         destination: './uploads',
         filename(_, file, callback) {
@@ -73,6 +73,9 @@ const uploadUserAction = asyncHandler(async (req: Request, res: Response) => {
     const upload = multer({ storage }).single('image');
 
     upload(req, res, (err) => {
+        console.log("req.body", req.body)
+        console.log("req.body.email", req.body.email)
+        console.log("req.file", req.file)
         if (err) {
             return res.send(400).send(err);
         }
