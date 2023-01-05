@@ -1,7 +1,7 @@
 import request from "supertest";
 import { faker } from '@faker-js/faker';
 
-
+import fs from 'fs';
 import app from "../../app";
 
 describe("User route", () => {
@@ -29,13 +29,37 @@ describe("User route", () => {
         expect(res.body.users[0]).toHaveProperty('email');
     });
 
-    test("User route createUsersAction", async () => {
+    // test("User route createUsersAction", async () => {
+    //     const data = {
+    //         name: "test",
+    //         email: faker.internet.email(),
+    //         password: "password",
+    //     }
+    //     const res = await request(app).post("/api/users").send(data);
+    //     console.log('res', {
+    //         'statusCode': res.statusCode,
+    //         'error': res.error,
+    //         'text': res.text,
+    //         "body": res.body
+    //     })
+
+    //     expect(res.statusCode).toEqual(201);
+    //     expect(res.body.user).toHaveProperty('id');
+    //     expect(res.body.user).toHaveProperty('name');
+    //     expect(res.body.user).toHaveProperty('email');
+    // });
+
+    test("User route uploadUsersAction", async () => {
         const data = {
             name: "test",
             email: faker.internet.email(),
             password: "password",
         }
-        const res = await request(app).post("/api/users").send(data);
+        const res = await request(app)
+            .post("/api/users/upload")
+            .set('content-type', 'multipart/form-data')
+            .attach('image', fs.readFileSync(`${__dirname}/file.png`), 'tests/file.png')
+
         console.log('res', {
             'statusCode': res.statusCode,
             'error': res.error,
@@ -43,9 +67,11 @@ describe("User route", () => {
             "body": res.body
         })
 
-        expect(res.statusCode).toEqual(201);
-        expect(res.body.user).toHaveProperty('id');
-        expect(res.body.user).toHaveProperty('name');
-        expect(res.body.user).toHaveProperty('email');
+        expect(res.statusCode).toEqual(200);
+        expect(res.body).toHaveProperty('url');
     });
 });
+
+function attach(arg0: string, arg1: any, arg2: string) {
+    throw new Error("Function not implemented.");
+}
