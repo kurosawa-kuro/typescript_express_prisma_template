@@ -17,4 +17,10 @@ cd typescript_express_prisma_template
 cd src
 npm run test
 npm run dev
+
+
+DATABASE_URL="mysql://root:password@localhost:3306/test_training?schema=public" npx prisma migrate dev --name init
+
+DATABASE_URL="mysql://root:password@localhost:3306/test_training?schema=public" npx jest  __tests__/routes/user.routes.test.ts
+
 ```
