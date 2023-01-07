@@ -447,3 +447,4 @@ $RECYCLE.BIN/
 */test.sqlite
 backend/public/images/*
 src/uploads/*
+src/prisma/test.sqlite
