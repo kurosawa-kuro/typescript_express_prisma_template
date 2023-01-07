@@ -11,10 +11,9 @@ const app: express.Express = express();
 setupLibrary(app);
 
 app.use('/api/', topRoute);
-app.use('/api/uploads', express.static('./uploads'));
+app.use('/api/uploads', express.static(__dirname + '/uploads'));
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
-
 
 app.use(notFound);
 app.use(errorHandler);

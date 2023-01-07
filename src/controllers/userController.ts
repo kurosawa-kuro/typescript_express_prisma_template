@@ -61,7 +61,6 @@ const uploadUserAction = asyncHandler(async (req: Request, res: Response) => {
     console.log('uploadUserAction')
     // console.log("req", req)
     // console.log("req.body", req.body)
-
     const storage = multer.diskStorage({
         destination: './uploads',
         filename(_, file, callback) {
