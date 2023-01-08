@@ -2,7 +2,6 @@ import { spawn } from "child_process";
 import { PrismaClient } from "@prisma/client";
 
 export default async function () {
-    // if (process.env.NODE_ENV === "test") {
     await new Promise(async (resolve, reject) => {
         try {
             const prisma = new PrismaClient();
