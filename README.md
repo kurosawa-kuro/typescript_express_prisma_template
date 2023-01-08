@@ -10,7 +10,7 @@ npx prisma generate
 npx prisma migrate dev --name init
 
 cd seed
-npx ts-node ./index.ts
+npx ts-node seed/index.ts
 npx ts-node ./reader.ts
 
 cd typescript_express_prisma_template

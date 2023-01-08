@@ -10,8 +10,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Photo {
+  title String
+  url   String @unique
+}
+
 model Information {
-  content  String  @unique
+  content String @unique
 }
 
 model User {
