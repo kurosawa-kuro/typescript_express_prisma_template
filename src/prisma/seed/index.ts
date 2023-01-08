@@ -7,12 +7,27 @@ const prisma = new PrismaClient()
 
 import { Users as usersData } from './data/users';
 import { Posts as postsData } from './data/posts';
+import { Informations as informationData } from './data/information';
 
 async function runSeeders() {
     await deleteMany()
 
+    await seed_informations()
     await seed_users()
     await seed_posts()
+}
+
+async function seed_informations() {
+    // console.log(await bcrypt.hash('password', 10))
+    await Promise.all(
+        informationData.map(async (information: any) =>
+            await prisma.information.create({
+                data: {
+                    content: information.content,
+                }
+            })
+        )
+    );
 }
 
 async function seed_users() {
@@ -55,9 +70,10 @@ async function seed_posts() {
 async function deleteMany() {
     const deletePosts = prisma.post.deleteMany({})
     const deleteUsers = prisma.user.deleteMany({})
+    const deleteInformation = prisma.information.deleteMany({})
 
     // The transaction runs synchronously so deleteUsers must run last.
-    await prisma.$transaction([deletePosts, deleteUsers])
+    await prisma.$transaction([deleteInformation, deletePosts, deleteUsers])
 }
 
 runSeeders()

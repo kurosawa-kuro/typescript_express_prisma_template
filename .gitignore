@@ -448,3 +448,4 @@ $RECYCLE.BIN/
 backend/public/images/*
 src/uploads/*
 src/prisma/test.sqlite
+src/prisma/migrations/*
