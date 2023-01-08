@@ -1,13 +1,9 @@
-import express from 'express';
 import request from "supertest";
-import { faker } from '@faker-js/faker';
-
 import { db } from "../../utils/db";
 import resetDatabase from "../testUtils/resetDatabase";
-import { Users as usersData } from "../../prisma/seed/data/users";
 import { addUsers } from "../testUtils/addData";
-import fs from 'fs';
 import app from "../../app";
+import { Users as usersData } from "../../prisma/seed/data/users";
 
 describe("User route", () => {
     beforeEach(async () => {
@@ -22,24 +18,16 @@ describe("User route", () => {
 
         const res = await request(app).get("/api/users");
         // console.log('res', res)
-        // console.log('res', res)
         console.log('res.error', res.error)
         console.log('res.text', res.text)
         // console.log('res.statusCode', res.statusCode)
         console.log('res.body', res.body)
         console.log('typeof res.body.users[0]', res.body.users[0])
         expect(res.statusCode).toEqual(200);
-        // expect(res.body).toEqual({
-        //     users: [
-        //         { id: 1, name: 'test admin', email: 'admin@admin.com' },
-        //         { id: 2, name: 'test user', email: 'user@user.com' },
-        //         { id: 3, name: 'test user', email: 'user2@user.com' },
-        //         { id: 4, name: 'test user', email: 'user3@user.com' }
-        //     ]
-        // });
         expect(res.body.users[0]).toHaveProperty('id');
         expect(res.body.users[0]).toHaveProperty('name');
         expect(res.body.users[0]).toHaveProperty('email');
+        expect(res.body.users.length).toBe(usersData.length);
     });
 
     // test("User route createUsersAction", async () => {
