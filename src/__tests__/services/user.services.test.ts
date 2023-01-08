@@ -2,6 +2,7 @@ import { createUserService, readUsersService, readUserService, updateUserService
 import { db } from "../../utils/db";
 import resetDatabase from "../testUtils/resetDatabase";
 import { Users as usersData } from "../../prisma/seed/data/users";
+import { addUsers } from "../testUtils/addData";
 
 describe("User Service", () => {
     beforeEach(async () => {
@@ -12,16 +13,7 @@ describe("User Service", () => {
     });
 
     test("Read Users service", async () => {
-        usersData.forEach(async (user) => {
-            const body: Omit<User, "id"> = {
-                "name": user.name,
-                "email": user.email,
-                "password": user.email,
-            };
-
-            console.log("user.name", user.name)
-            await createUserService(body);
-        });
+        await addUsers()
 
         const res = await readUsersService();
         console.log('readUsersService res', res)
