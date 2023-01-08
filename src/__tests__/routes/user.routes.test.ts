@@ -5,7 +5,7 @@ import { faker } from '@faker-js/faker';
 import { db } from "../../utils/db";
 import resetDatabase from "../testUtils/resetDatabase";
 import { Users as usersData } from "../../prisma/seed/data/users";
-
+import { addUsers } from "../testUtils/addData";
 import fs from 'fs';
 import app from "../../app";
 
@@ -18,7 +18,7 @@ describe("User route", () => {
     });
 
     test("User route readUsersAction", async () => {
-
+        await addUsers()
 
         const res = await request(app).get("/api/users");
         // console.log('res', res)
