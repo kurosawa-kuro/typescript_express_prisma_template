@@ -1,7 +1,7 @@
 import { db } from "../utils/db";
 
 export type User = {
-    id: number;
+    id?: number;
     name: string;
     email: string;
     password?: string;
@@ -21,7 +21,7 @@ const createUserService = async (
             id: true,
             name: true,
             email: true,
-            password: true,
+            password: false,
         },
     });
 };
