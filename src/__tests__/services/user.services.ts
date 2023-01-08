@@ -12,7 +12,6 @@ describe("User Service", () => {
     });
 
     test("Read Users service", async () => {
-
         usersData.forEach(async (user) => {
             const body: Omit<User, "id"> = {
                 "name": user.name,
