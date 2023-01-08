@@ -27,7 +27,15 @@ const createUserService = async (
 };
 
 const readUsersService = async (): Promise<Omit<User, "password">[]> => {
-    return db.user.findMany({
+    console.log(await db.user.findMany({
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            password: false,
+        },
+    }))
+    return await db.user.findMany({
         select: {
             id: true,
             name: true,
