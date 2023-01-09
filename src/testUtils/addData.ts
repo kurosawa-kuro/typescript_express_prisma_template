@@ -12,7 +12,7 @@ export const addUsers = async () => {
             "password": user.password,
         };
 
-        console.log("user.name", user.name)
+        // console.log("user.name", user.name)
         await createUserService(body);
     });
 }
