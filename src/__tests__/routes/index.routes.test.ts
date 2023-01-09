@@ -7,8 +7,8 @@ describe("Top route", () => {
         const res = await request(app).get("/api/");
         // console.log('res', res)
         // console.log('res', res)
-        console.log('res.error', res.error)
-        console.log('res.text', res.text)
+        // console.log('res.error', res.error)
+        // console.log('res.text', res.text)
         // console.log('res.statusCode', res.statusCode)
         // console.log('res.body', res.body)
         expect(res.statusCode).toEqual(200);

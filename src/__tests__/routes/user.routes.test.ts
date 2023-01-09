@@ -1,7 +1,7 @@
 import request from "supertest";
 import { db } from "../../utils/db";
-import resetDatabase from "../testUtils/resetDatabase";
-import { addUsers } from "../testUtils/addData";
+import resetDatabase from "../../testUtils/resetDatabase";
+import { addUsers } from "../../testUtils/addData";
 import app from "../../app";
 import { Users as usersData } from "../../prisma/seed/data/users";
 
@@ -18,11 +18,11 @@ describe("User route", () => {
 
         const res = await request(app).get("/api/users");
         // console.log('res', res)
-        console.log('res.error', res.error)
-        console.log('res.text', res.text)
+        // console.log('res.error', res.error)
+        // console.log('res.text', res.text)
         // console.log('res.statusCode', res.statusCode)
-        console.log('res.body', res.body)
-        console.log('typeof res.body.users[0]', res.body.users[0])
+        // console.log('res.body', res.body)
+        // console.log('typeof res.body.users[0]', res.body.users[0])
         expect(res.statusCode).toEqual(200);
         expect(res.body.users[0]).toHaveProperty('id');
         expect(res.body.users[0]).toHaveProperty('name');

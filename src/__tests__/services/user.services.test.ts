@@ -1,8 +1,9 @@
 import { createUserService, readUsersService, readUserService, updateUserService, deleteUserService, User } from "../../services/userService";
 import { db } from "../../utils/db";
-import resetDatabase from "../testUtils/resetDatabase";
+import resetDatabase from "../../testUtils/resetDatabase";
+import { addUsers } from "../../testUtils/addData";
 import { Users as usersData } from "../../prisma/seed/data/users";
-import { addUsers } from "../testUtils/addData";
+
 
 describe("User Service", () => {
     beforeEach(async () => {

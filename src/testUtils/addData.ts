@@ -1,8 +1,8 @@
-import { createUserService, readUsersService, readUserService, updateUserService, deleteUserService, User } from "../../services/userService";
+import { createUserService, readUsersService, readUserService, updateUserService, deleteUserService, User } from "../services/userService";
 import supertest from 'supertest'
-import app from '../../app'
-import { Users as usersData } from "../../prisma/seed/data/users";
-import { db } from "../../utils/db";
+import app from '../app'
+import { Users as usersData } from "../prisma/seed/data/users";
+import { db } from "../utils/db";
 
 export const addUsers = async () => {
     usersData.forEach(async (user) => {

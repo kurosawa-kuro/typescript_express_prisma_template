@@ -1,7 +1,7 @@
 import express from 'express';
 
 const router = express.Router();
-import { AuthMiddleware } from '../middleware/authMiddleware';
+import { AuthMiddleware } from '../middlewares/authMiddleware';
 import { registerAction, loginAction, userAction, logoutAction } from '../controllers/authController';
 
 // GET POST
