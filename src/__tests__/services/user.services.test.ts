@@ -14,7 +14,7 @@ describe("User Service", () => {
     });
 
     test("Read Users service", async () => {
-        await addUsers()
+        await addUsers(usersData)
 
         const res = await readUsersService();
         console.log('readUsersService res', res)

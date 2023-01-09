@@ -14,7 +14,7 @@ describe("User route", () => {
     });
 
     test("User route readUsersAction", async () => {
-        await addUsers()
+        await addUsers(usersData)
 
         const res = await request(app).get("/api/users");
         // console.log('res', res)

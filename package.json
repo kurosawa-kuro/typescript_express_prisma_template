@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "test": "jest --coverage",
+    "test": "DATABASE_URL='mysql://root:password@localhost:3306/test_training?schema=public' jest __tests__/*/* --coverage",
     "test-single": "jest ../__tests__/routes/index.routes.test.ts --coverage",
     "test-single-case": "jest -t 'User route readUsersAction' --coverage"
   },
