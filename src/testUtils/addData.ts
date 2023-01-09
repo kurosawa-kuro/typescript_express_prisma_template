@@ -9,7 +9,7 @@ export const addUsers = async () => {
         const body: Omit<User, "id"> = {
             "name": user.name,
             "email": user.email,
-            "password": user.email,
+            "password": user.password,
         };
 
         console.log("user.name", user.name)
