@@ -4,7 +4,6 @@ import resetDatabase from "../../testUtils/resetDatabase";
 import { addUsers } from "../../testUtils/addData";
 import { Users as usersData } from "../../prisma/seed/data/users";
 
-
 describe("User Service", () => {
     beforeEach(async () => {
         await resetDatabase();
